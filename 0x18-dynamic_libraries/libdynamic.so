@@ -1,0 +1,203 @@
+// _putchar.c
+#include <unistd.h>
+
+int _putchar(char c) {
+    return write(1, &c, 1);
+}
+
+// _islower.c
+int _islower(int c) {
+    return (c >= 'a' && c <= 'z');
+}
+
+// _isalpha.c
+int _isalpha(int c) {
+    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+}
+
+// _abs.c
+int _abs(int n) {
+    return (n < 0) ? -n : n;
+}
+
+// _isupper.c
+int _isupper(int c) {
+    return (c >= 'A' && c <= 'Z');
+}
+
+// _isdigit.c
+int _isdigit(int c) {
+    return (c >= '0' && c <= '9');
+}
+
+// _strlen.c
+int _strlen(char *s) {
+    int len = 0;
+    while (*s != '\0') {
+        len++;
+        s++;
+    }
+    return len;
+}
+
+// _puts.c
+#include <unistd.h>
+
+void _puts(char *s) {
+    while (*s != '\0') {
+        _putchar(*s);
+        s++;
+    }
+    _putchar('\n');
+}
+
+// _strcpy.c
+char *_strcpy(char *dest, char *src) {
+    char *start = dest;
+    while (*src) {
+        *dest++ = *src++;
+    }
+    *dest = '\0';
+    return start;
+}
+
+// _atoi.c
+int _atoi(char *s) {
+    int result = 0;
+    int sign = 1;
+    while (*s == ' ' || (*s >= 9 && *s <= 13)) {
+        s++;
+    }
+    if (*s == '-') {
+        sign = -1;
+        s++;
+    }
+    while (*s >= '0' && *s <= '9') {
+        result = result * 10 + (*s - '0');
+        s++;
+    }
+    return sign * result;
+}
+
+// _strcat.c
+char *_strcat(char *dest, char *src) {
+    char *ptr = dest;
+    while (*ptr != '\0') {
+        ptr++;
+    }
+    while (*src != '\0') {
+        *ptr++ = *src++;
+    }
+    *ptr = '\0';
+    return dest;
+}
+
+// _strncat.c
+char *_strncat(char *dest, char *src, int n) {
+    char *ptr = dest;
+    while (*ptr != '\0') {
+        ptr++;
+    }
+    while (*src != '\0' && n > 0) {
+        *ptr++ = *src++;
+        n--;
+    }
+    *ptr = '\0';
+    return dest;
+}
+
+// _strncpy.c
+char *_strncpy(char *dest, char *src, int n) {
+    char *start = dest;
+    while (*src != '\0' && n > 0) {
+        *dest++ = *src++;
+        n--;
+    }
+    while (n > 0) {
+        *dest++ = '\0';
+        n--;
+    }
+    return start;
+}
+
+// _strcmp.c
+int _strcmp(char *s1, char *s2) {
+    while (*s1 && *s2 && *s1 == *s2) {
+        s1++;
+        s2++;
+    }
+    return (*s1 - *s2);
+}
+
+// _memset.c
+char *_memset(char *s, char b, unsigned int n) {
+    char *ptr = s;
+    while (n > 0) {
+        *ptr = b;
+        ptr++;
+        n--;
+    }
+    return s;
+}
+
+// _memcpy.c
+char *_memcpy(char *dest, char *src, unsigned int n) {
+    char *start = dest;
+    while (n > 0) {
+        *dest++ = *src++;
+        n--;
+    }
+    return start;
+}
+
+// _strchr.c
+char *_strchr(char *s, char c) {
+    while (*s != '\0') {
+        if (*s == c) {
+            return s;
+        }
+        s++;
+    }
+    if (c == '\0') {
+        return s;
+    }
+    return NULL;
+}
+
+// _strspn.c
+unsigned int _strspn(char *s, char *accept) {
+    unsigned int count = 0;
+    while (*s && *accept && strchr(accept, *s) != NULL) {
+        count++;
+        s++;
+    }
+    return count;
+}
+
+// _strpbrk.c
+char *_strpbrk(char *s, char *accept) {
+    while (*s) {
+        if (strchr(accept, *s) != NULL) {
+            return s;
+        }
+        s++;
+    }
+    return NULL;
+}
+
+// _strstr.c
+char *_strstr(char *haystack, char *needle) {
+    while (*haystack) {
+        char *start = haystack;
+        char *sub = needle;
+        while (*haystack && *sub && *haystack == *sub) {
+            haystack++;
+            sub++;
+        }
+        if (!*sub) {
+            return start;
+        }
+        haystack = start + 1;
+    }
+    return NULL;
+}
