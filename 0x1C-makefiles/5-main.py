@@ -12,5 +12,5 @@ if __name__ == "__main__":
         [0, 1, 1, 1, 0, 0],
         [0, 0, 0, 0, 0, 0]
     ]
-    print(island_perimeter(grid))  # Expected output: 12
+    print(island_perimeter(grid))
 
