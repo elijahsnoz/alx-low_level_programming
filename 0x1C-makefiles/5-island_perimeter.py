@@ -1,32 +1,23 @@
 #!/usr/bin/python3
-"""
-Module to calculate the perimeter of an island in a grid.
-"""
+"""5-island_perimeter module"""
 
 
 def island_perimeter(grid):
-    """
-    Returns the perimeter of the island described in grid.
-    
-    :param grid: List of list of integers where 0 represents water and 1 represents land
-    :return: The perimeter of the island
-    """
-    perimeter = 0
-    rows = len(grid)
-    cols = len(grid[0])
+    """Returns the perimeter of the island described in grid"""
+    c = 0
+    length = len(grid) - 1
+    width = len(grid[0]) - 1
 
-    for i in range(rows):
-        for j in range(cols):
-            if grid[i][j] == 1:
-                # Check all four possible directions
-                if i == 0 or grid[i-1][j] == 0:  # Up
-                    perimeter += 1
-                if i == rows - 1 or grid[i + 1][j] == 0:  # Down
-                    perimeter += 1
-                if j == 0 or grid[i][j - 1] == 0:  # Left
-                    perimeter += 1
-                if j == cols - 1 or grid[i][j + 1] == 0:  # Right
-                    perimeter += 1
-
-    return perimeter
+    for i, r in enumerate(grid):
+        for j, n in enumerate(r):
+            if n == 1:
+                if i == 0 or grid[i - 1][j] != 1:
+                    c += 1
+                if j == 0 or grid[i][j - 1] != 1:
+                    c += 1
+                if j == width or grid[i][j + 1] != 1:
+                    c += 1
+                if i == length or grid[i + 1][j] != 1:
+                    c += 1
+    return c
 
