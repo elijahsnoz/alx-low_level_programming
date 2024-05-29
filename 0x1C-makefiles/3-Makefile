@@ -1,0 +1,35 @@
+# Define variables
+CC = gcc
+SRC = main.c school.c
+OBJ = $(SRC:.c=.o)
+NAME = school
+RM = rm -f
+
+# The default rule to build the executable
+all: $(NAME)
+
+# Rule to build the executable from object files
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+# Rule to build object files from source files
+%.o: %.c
+	$(CC) -c -o $@ $<
+
+# Rule to clean the directory (remove Emacs and Vim temporary files and the executable)
+clean:
+	$(RM) *~ $(NAME)
+
+# Rule to delete the object files
+oclean:
+	$(RM) $(OBJ)
+
+# Rule to delete all Emacs and Vim temporary files, the executable, and the object files
+fclean: clean oclean
+
+# Rule to force recompilation of all source files
+re: fclean all
+
+# Declare phony targets to avoid conflicts with files of the same name
+.PHONY: all clean oclean fclean re
+
